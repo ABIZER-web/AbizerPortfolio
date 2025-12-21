@@ -1,0 +1,87 @@
+/* --- Navbar Container --- */
+.navbar {
+  position: fixed; /* Fixes it to the top */
+  top: 0;
+  background:rgba(15, 23, 42, 0.85);
+  left: 0;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between; /* Pushes Logo left, Menu right */
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000; /* Ensures it sits ABOVE the stars and hero */
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* --- Glass Effect on Scroll --- */
+.navbar.scrolled {
+  background: rgba(15, 23, 42, 0.85); /* Dark semi-transparent */
+  backdrop-filter: blur(10px); /* The blur effect */
+  padding: 15px 50px; /* Shrinks slightly on scroll */
+  box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+}
+
+/* --- Logo --- */
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #64ffda; /* Tech Green */
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+/* --- Menu Items --- */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 30px; /* Space between items */
+  align-items: center;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: #ccd6f6; /* Light Grey */
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+}
+
+/* Hover Effect */
+.nav-item a:hover {
+  color: #64ffda;
+}
+
+/* Icon Styles */
+.nav-icon {
+  font-size: 0.9rem;
+}
+
+/* --- Resume Button Style --- */
+.resume-btn {
+  border: 1px solid #64ffda;
+  color: #64ffda !important; /* Force green color */
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out !important;
+  background: transparent;
+}
+
+.resume-btn:hover {
+  background: rgba(100, 255, 218, 0.1);
+  transform: translateY(-2px);
+}
+
+/* --- Responsive for Mobile (Hides menu on small screens) --- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px;
+  }
+  .nav-menu {
+    display: none; /* You would typically add a Hamburger menu here */
+  }
+}

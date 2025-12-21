@@ -1,0 +1,231 @@
+/* src/components/Contact.css */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap'); /* Good font for code */
+
+.contact-section {
+  min-height: 100vh;
+  background-color: #0b1120; /* Deep dark background */
+  padding: 100px 20px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-container {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* --- 1. Header Section --- */
+.contact-header {
+  text-align: center;
+}
+
+.glitch-text {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3rem;
+  color: #a855f7; /* Purple base */
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  position: relative;
+  display: inline-block;
+  text-shadow: 2px 2px 0px #0aff9d; /* Green shadow */
+}
+
+.subtitle {
+  margin-top: 20px;
+  color: #94a3b8;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+/* --- 2. Terminal Section --- */
+.terminal-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.terminal-window {
+  width: 100%;
+  max-width: 800px;
+  background-color: #1e293b; /* Dark slate */
+  border-radius: 12px;
+  border: 1px solid #334155;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+.terminal-bar {
+  background-color: #0f172a;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid #334155;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.red { background-color: #ef4444; }
+.yellow { background-color: #f59e0b; }
+.green { background-color: #22c55e; }
+
+.terminal-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.terminal-body {
+  padding: 25px;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Rust Syntax Highlighting */
+.indent { padding-left: 2rem; }
+.comment { color: #6b7280; font-style: italic; }
+.keyword { color: #c678dd; font-weight: bold; } /* Purple */
+.type { color: #56b6c2; } /* Cyan */
+.field { color: #e06c75; } /* Redish/Orange */
+.string { color: #98c379; } /* Green */
+
+/* Command Line styles */
+.command-line { margin-top: 15px; }
+.prompt { color: #0aff9d; margin-right: 10px; }
+.output { color: #94a3b8; }
+.success { color: #0aff9d; }
+.highlight { color: #f59e0b; }
+
+
+/* --- 3. Cards Grid --- */
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
+  gap: 25px;
+}
+
+.contact-card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Card Hover Effects */
+.contact-card:hover {
+  transform: translateY(-10px);
+  border-color: #a855f7; /* Default hover color */
+  box-shadow: 0 10px 25px -5px rgba(168, 85, 247, 0.4);
+}
+/* Specific hover colors per card */
+.email-card:hover { border-color: #0aff9d; box-shadow: 0 10px 25px -5px rgba(10, 255, 157, 0.4); }
+.github-card:hover { border-color: #fff; box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.3); }
+.linkedin-card:hover { border-color: #0a66c2; box-shadow: 0 10px 25px -5px rgba(10, 102, 194, 0.4); }
+
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #a855f7;
+}
+.email-card .card-icon { color: #0aff9d; }
+.github-card .card-icon { color: #fff; }
+.linkedin-card .card-icon { color: #0a66c2; }
+
+
+.contact-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.contact-card p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  word-break: break-all; /* Ensures long emails don't overflow */
+}
+
+
+/* --- 4. Action Buttons --- */
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-icon-left { margin-right: 10px; }
+.btn-icon-right { margin-left: 10px; transition: transform 0.3s ease; }
+
+.primary-btn {
+  background-color: #0aff9d;
+  color: #0b1120;
+  border: 2px solid #0aff9d;
+}
+.primary-btn:hover {
+  background-color: transparent;
+  color: #0aff9d;
+  box-shadow: 0 0 15px rgba(10, 255, 157, 0.4);
+}
+.primary-btn:hover .btn-icon-right { transform: translateX(5px); }
+
+.secondary-btn {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+.secondary-btn:hover {
+  background-color: #fff;
+  color: #0b1120;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+.secondary-btn:hover .btn-icon-right { transform: translateX(5px); }
+
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+  .glitch-text { font-size: 2rem; }
+  
+  .contact-cards-grid {
+    grid-template-columns: 1fr; /* Stack cards vertically */
+  }
+
+  .contact-actions {
+    flex-direction: column; /* Stack buttons vertically */
+    width: 100%;
+  }
+  
+  .btn {
+    justify-content: center;
+  }
+}

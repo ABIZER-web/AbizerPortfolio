@@ -1,0 +1,198 @@
+/* src/components/About.css */
+
+/* Font Import for Glitch Header */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* --- MAIN SECTION LAYOUT --- */
+.about-section {
+  min-height: 100vh;
+  background-color: #0b1120; /* Dark background */
+  display: flex;
+  flex-direction: column; /* Stacks Header on top of the Row */
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+/* --- HEADER STYLES (Top Center) --- */
+.about-header {
+  text-align: center;
+  margin-bottom: 60px; /* Space between Header and Content */
+}
+
+.glitch-text {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3rem;
+  color: #a855f7; /* Purple */
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  position: relative;
+  display: inline-block;
+  text-shadow: 2px 2px 0px #0aff9d; /* Green Shadow */
+}
+
+.subtitle {
+  margin-top: 15px;
+  color: #94a3b8;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* --- CONTENT ROW (Left & Right Split) --- */
+.about-content-wrapper {
+  display: flex;
+  flex-direction: row; /* Forces Side-by-Side layout */
+  align-items: center; /* Centers items vertically */
+  justify-content: center;
+  gap: 50px; /* Gap between Cards and Terminal */
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Ensure both columns take available space */
+.about-cards-column, 
+.about-terminal-column {
+  flex: 1; 
+  width: 100%;
+}
+
+/* --- LEFT SIDE: STATS CARDS --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2x2 Grid */
+  gap: 20px;
+}
+
+.stat-card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-color: #475569;
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 5px 0;
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+}
+
+.stat-label {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Neon Colors */
+.green-icon { color: #0aff9d; }
+.green-text { color: #0aff9d; text-shadow: 0 0 10px rgba(10, 255, 157, 0.3); }
+
+.orange-icon { color: #f59e0b; }
+.orange-text { color: #f59e0b; text-shadow: 0 0 10px rgba(245, 158, 11, 0.3); }
+
+.purple-icon { color: #d946ef; }
+.purple-text { color: #d946ef; text-shadow: 0 0 10px rgba(217, 70, 239, 0.3); }
+
+.blue-icon { color: #06b6d4; }
+.blue-text { color: #06b6d4; text-shadow: 0 0 10px rgba(6, 182, 212, 0.3); }
+
+
+/* --- RIGHT SIDE: TERMINAL WINDOW --- */
+.terminal-window {
+  background-color: #0f172a;
+  border-radius: 10px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border: 1px solid #334155;
+  overflow: hidden;
+  font-family: 'Consolas', 'Monaco', monospace;
+  width: 100%;
+}
+
+.terminal-header {
+  background-color: #1e293b;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #334155;
+  position: relative;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.red { background-color: #ff5f56; }
+.yellow { background-color: #ffbd2e; }
+.green { background-color: #27c93f; }
+
+.terminal-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.terminal-body {
+  padding: 25px;
+  color: #e2e8f0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Syntax Highlighting */
+.keyword { color: #c678dd; }
+.variable { color: #e5c07b; }
+.string { color: #98c379; }
+.terminal-comment { color: #5c6370; font-style: italic; }
+.highlight { color: #0aff9d; font-weight: bold; }
+
+.interest-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.interest-list li {
+  margin-bottom: 8px;
+  color: #cbd5e1;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 900px) {
+  .about-content-wrapper {
+    flex-direction: column-reverse; /* Stack: Terminal Top, Cards Bottom on mobile */
+    gap: 40px;
+  }
+  
+  .glitch-text {
+    font-size: 2rem;
+  }
+
+  .stats-grid {
+    width: 100%;
+  }
+}
