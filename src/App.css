@@ -61,3 +61,20 @@ body {
   max-width: 1000px;
   width: 100%;
 }
+
+/* App.css / index.css */
+
+/* ... your existing cursor styles ... */
+
+/* HIDE CUSTOM CURSOR ON MOBILE & TOUCH SCREENS */
+@media (max-width: 768px), (hover: none) {
+  .cursor-dot, 
+  .cursor-outline {
+    display: none !important;
+  }
+  
+  /* Reset default cursor */
+  * {
+    cursor: auto !important;
+  }
+}

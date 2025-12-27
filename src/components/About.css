@@ -20,15 +20,62 @@
   margin-bottom: 60px; /* Space between Header and Content */
 }
 
+/* --- GLITCH TEXT ANIMATION --- */
 .glitch-text {
   font-family: 'Press Start 2P', cursive;
   font-size: 3rem;
-  color: #a855f7; /* Purple */
+  color: #a855f7; /* Purple Base */
   text-transform: uppercase;
   letter-spacing: 5px;
   position: relative;
   display: inline-block;
-  text-shadow: 2px 2px 0px #0aff9d; /* Green Shadow */
+}
+
+/* Creating the glitch layers */
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0b1120; /* Matches background to hide parts of text */
+}
+
+/* Layer 1: Green Shift */
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -2px 0 #0aff9d; /* Green Shadow */
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+/* Layer 2: Purple/Blue Shift */
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -2px 0 #06b6d4; /* Blue Shadow */
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+/* Keyframes for the glitch movement */
+@keyframes glitch-anim {
+  0% { clip: rect(11px, 9999px, 86px, 0); }
+  20% { clip: rect(93px, 9999px, 14px, 0); }
+  40% { clip: rect(35px, 9999px, 14px, 0); }
+  60% { clip: rect(6px, 9999px, 60px, 0); }
+  80% { clip: rect(44px, 9999px, 32px, 0); }
+  100% { clip: rect(81px, 9999px, 50px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip: rect(66px, 9999px, 47px, 0); }
+  20% { clip: rect(26px, 9999px, 9px, 0); }
+  40% { clip: rect(88px, 9999px, 73px, 0); }
+  60% { clip: rect(44px, 9999px, 80px, 0); }
+  80% { clip: rect(9px, 9999px, 34px, 0); }
+  100% { clip: rect(87px, 9999px, 95px, 0); }
 }
 
 .subtitle {
@@ -86,6 +133,13 @@
 .stat-icon {
   font-size: 1.5rem;
   margin-bottom: 10px;
+  /* Add this line for smooth animation */
+  transition: transform 0.3s ease; 
+   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.stat-card:hover .stat-icon {
+  transform: translateY(-20px) scale(1.1); /* Icon flies up higher than the card */
 }
 
 .stat-number {

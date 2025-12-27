@@ -11,11 +11,12 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import TechDivider from './components/TechDivider';
 import Footer from './components/Footer';
-
+import Background from './components/Background';
 
 function App() {
   return (
     <div className="App">
+      <Background />
       <Navbar />
       
       {/* Sections have IDs for Navigation */}
