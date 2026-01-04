@@ -1,6 +1,8 @@
 /* src/components/Projects.css */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
+/* --- MAIN LAYOUT --- */
 .projects-section {
   min-height: 100vh;
   background-color: #0b1120;
@@ -41,7 +43,7 @@
 
 /* --- CATEGORY SECTION --- */
 .category-section {
-  margin-bottom: 80px; /* Space between categories */
+  margin-bottom: 80px;
 }
 
 .category-header {
@@ -49,6 +51,7 @@
   position: relative;
 }
 
+/* ANIMATION: Category Title Slide In */
 .category-title {
   font-size: 1.8rem;
   color: #f8fafc;
@@ -56,6 +59,9 @@
   margin-bottom: 5px;
   display: flex;
   align-items: center;
+  animation: slideInLeft 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateX(-20px);
 }
 
 .hash { color: #0aff9d; margin-right: 10px; }
@@ -64,38 +70,54 @@
   color: #94a3b8;
   font-size: 0.9rem;
   font-family: 'Courier New', monospace;
+  animation: slideInLeft 0.8s ease-out 0.2s forwards; /* Delay */
+  opacity: 0;
+  transform: translateX(-20px);
 }
 
+/* ANIMATION: Line Grows */
 .category-line {
   height: 1px;
   background: linear-gradient(90deg, #334155, transparent);
   margin-top: 15px;
-  width: 100%;
+  width: 0%; /* Start width 0 */
+  animation: growLine 1s ease-out 0.5s forwards;
 }
 
-/* --- PROJECTS GRID (The inner cards) --- */
+/* --- PROJECTS GRID --- */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive Grid */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
   gap: 25px;
 }
 
-/* --- INDIVIDUAL PROJECT CARD --- */
+/* --- CARD STYLE --- */
 .project-card {
   background-color: #1e293b;
   border: 1px solid #334155;
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  animation: popIn 0.6s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.9);
 }
 
+/* Stagger animation for cards */
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
   box-shadow: 0 10px 20px rgba(0,0,0,0.3);
   border-color: #0aff9d;
 }
 
-/* Image */
+/* Image Wrapper */
 .image-container {
   width: 100%;
   height: 180px;
@@ -117,19 +139,97 @@
 /* Card Content */
 .card-content {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
+
+/* =========================================
+   UPDATED: PROJECT NAME GLITCH EFFECT
+   ========================================= */
 
 .project-name {
   font-size: 1.1rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #e2e8f0;
   font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  position: relative;
+  display: inline-block; /* Changed from flex to inline-block for glitch */
+}
+
+/* The Glitch Effect on Hover */
+.glitch-hover:hover {
+  color: #0aff9d; /* Main text turns green on hover */
+}
+
+/* Creating the pseudo-elements that only appear on hover */
+.glitch-hover::before,
+.glitch-hover::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1e293b; /* Matches card background to hide main text */
+  opacity: 0; /* Hidden by default */
+  pointer-events: none;
+}
+
+/* Layer 1: Magenta shift on hover */
+.glitch-hover:hover::before {
+  opacity: 1;
+  left: 2px;
+  text-shadow: -1px 0 #ff00ff; 
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim-text 0.3s infinite linear alternate-reverse;
+}
+
+/* Layer 2: Cyan shift on hover */
+.glitch-hover:hover::after {
+  opacity: 1;
+  left: -2px;
+  text-shadow: 1px 0 #00ffff; 
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim-text 0.3s infinite linear alternate-reverse;
+  animation-delay: 0.1s;
+}
+
+/* Keeps Category Titles Popping (Using the old hover-char class) */
+.category-title .hover-char {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1), color 0.2s, text-shadow 0.2s;
+}
+.category-title .hover-char:hover {
+  color: #0aff9d; 
+  text-shadow: 0 0 10px #0aff9d;
+  transform: translateY(-5px) scale(1.2); 
+}
+
+/* --- DESCRIPTION & RED NOTE HIGHLIGHT --- */
+.project-desc-text {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  font-family: 'Inter', sans-serif;
+}
+
+.note-highlight {
+  color: #ef4444; /* Bright Red */
+  font-weight: bold;
+  background-color: rgba(239, 68, 68, 0.1); /* Subtle red background */
+  padding: 0 4px;
+  border-radius: 4px;
 }
 
 /* Buttons */
 .btn-group {
   display: flex;
   gap: 15px;
+  margin-top: auto; 
 }
 
 .project-btn {
@@ -138,7 +238,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 8px 12px;
+  padding: 10px 12px;
   border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 600;
@@ -146,27 +246,42 @@
   transition: all 0.2s ease;
 }
 
-.github {
-  background-color: #334155;
-  color: #fff;
-}
-.github:hover {
-  background-color: #fff;
-  color: #0f172a;
+.github { background-color: #334155; color: #fff; }
+.github:hover { background-color: #fff; color: #0f172a; }
+
+.live { background-color: rgba(10, 255, 157, 0.1); color: #0aff9d; border: 1px solid #0aff9d; }
+.live:hover { background-color: #0aff9d; color: #0f172a; }
+
+/* --- KEYFRAMES --- */
+@keyframes slideInLeft {
+  to { opacity: 1; transform: translateX(0); }
 }
 
-.live {
-  background-color: rgba(10, 255, 157, 0.1);
-  color: #0aff9d;
-  border: 1px solid #0aff9d;
-}
-.live:hover {
-  background-color: #0aff9d;
-  color: #0f172a;
+@keyframes growLine {
+  to { width: 100%; }
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .glitch-text { font-size: 2rem; }
-  .projects-grid { grid-template-columns: 1fr; }
+@keyframes popIn {
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glitch-anim-text {
+  0% { clip: rect(24px, 550px, 90px, 0); }
+  20% { clip: rect(85px, 550px, 140px, 0); }
+  40% { clip: rect(10px, 550px, 50px, 0); }
+  60% { clip: rect(60px, 550px, 10px, 0); }
+  80% { clip: rect(5px, 550px, 80px, 0); }
+  100% { clip: rect(30px, 550px, 120px, 0); }
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+  .projects-section { padding: 60px 20px; }
+  .glitch-text { font-size: 2rem; letter-spacing: 2px; }
+  .projects-grid { grid-template-columns: 1fr; gap: 30px; }
+  .category-title { font-size: 1.5rem; }
+  .project-btn { padding: 12px; font-size: 0.95rem; }
+  
+  /* Reduce pop animation size on mobile */
+  .category-title .hover-char:hover { transform: translateY(-3px) scale(1.1); }
 }

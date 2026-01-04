@@ -1,64 +1,74 @@
 import React, { useState, useEffect } from "react";
-import { FaUser, FaDownload } from "react-icons/fa"; // Importing icons
+// Import necessary icons
+import { FaUser, FaDownload, FaBars, FaTimes } from "react-icons/fa"; 
 import "./Navbar.css";
 import MyResume from "./resume.pdf";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // State for mobile menu
 
-  // Effect to detect scrolling and add background blur
+  // Toggle function
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
-      {/* Left Side: Logo */}
-      <div className="nav-logo">
-       &lt; Abizer Saify /&gt;
-      </div>
-
-      {/* Right Side: Links */}
-      <ul className="nav-menu">
-        <li className="nav-item">
-          <a href="#home">Home</a>
-        </li>
+      <div className="nav-container">
         
-        <li className="nav-item">
-          <a href="#about" className="icon-link">
-            <FaUser className="nav-icon" /> About
-          </a>
-        </li>
+        {/* Logo */}
+        <div className="nav-logo">
+           &lt; Abizer Saify /&gt;
+        </div>
 
-        <li className="nav-item">
-          <a href="#skills">Skills</a>
-        </li>
+        {/* Hamburger Icon (Only visible on Mobile) */}
+        <div className="menu-icon" onClick={toggleMenu}>
+          {isOpen ? <FaTimes /> : <FaBars />}
+        </div>
 
-        <li className="nav-item">
-          <a href="#projects">Projects</a>
-        </li>
+        {/* Nav Links */}
+        <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
+          <li className="nav-item">
+            <a href="#home" onClick={toggleMenu}>Home</a>
+          </li>
+          
+          <li className="nav-item">
+            <a href="#about" className="icon-link" onClick={toggleMenu}>
+              <FaUser className="nav-icon" /> About
+            </a>
+          </li>
 
-        <li className="nav-item">
-          <a href="#contact">Contact</a>
-        </li>
+          <li className="nav-item">
+            <a href="#skills" onClick={toggleMenu}>Skills</a>
+          </li>
 
-        {/* Resume Button */}
-        <li className="nav-item">
-          {/* 2. USE THE VARIABLE HERE */}
-          <a href={MyResume} download="Abizer_Saify_Resume.pdf" className="resume-btn">
-            <FaDownload className="nav-icon" /> Resume
-          </a>
-        </li>
-      </ul>
+          <li className="nav-item">
+            <a href="#projects" onClick={toggleMenu}>Projects</a>
+          </li>
+
+          <li className="nav-item">
+            <a href="#contact" onClick={toggleMenu}>Contact</a>
+          </li>
+
+          {/* Resume Button */}
+          <li className="nav-item">
+            <a href={MyResume} download="Abizer_Saify_Resume.pdf" className="resume-btn" onClick={toggleMenu}>
+              <FaDownload className="nav-icon" /> Resume
+            </a>
+          </li>
+        </ul>
+
+      </div>
     </nav>
   );
 };

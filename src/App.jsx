@@ -1,59 +1,75 @@
-// App.jsx
-import React from 'react';
+import React, { useState } from 'react'; // <--- FIXED: Added { useState }
 import './App.css';
 
-// Importing Components (We will define these below)
+// Importing Components
 import Navbar from './components/Navbar';
-import Home from './components/Home';
-import About from './components/About';
+import HeroSection from './components/Home'; // Assuming file is Home.jsx or HeroSection.jsx
+import AboutSection from "./components/About";  // Assuming file is AboutSection.jsx
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import TechDivider from './components/TechDivider';
 import Footer from './components/Footer';
 import Background from './components/Background';
+import Loader from './components/Loader';
 
 function App() {
+  // State to track if loading is complete
+  const [loading, setLoading] = useState(true);
+
+  // Function to hide loader
+  const handleLoaded = () => {
+    setLoading(false);
+  };
+
   return (
-    <div className="App">
-      <Background />
-      <Navbar />
-      
-      {/* Sections have IDs for Navigation */}
-      <div id="home">
-        <Home />
-      </div>
+    <>
+      {/* Show Loader if loading is true */}
+      {loading ? (
+        <Loader onLoaded={handleLoaded} />
+      ) : (
+        /* Show App Content once loading is false */
+        <div className="App fade-in-content">
+          <Background />
+          <Navbar />
+          
+          {/* Sections have IDs for Navigation */}
+          <div id="home">
+            <HeroSection />
+          </div>
 
-      <TechDivider />
+          <TechDivider />
 
-      <div id="about">
-        <About />
-      </div>
+          <div id="about">
+            <AboutSection />
+          </div>
 
-      <TechDivider />
+          <TechDivider />
 
-      <div id="skills">
-        <Skills />
-      </div>
+          <div id="skills">
+            <Skills />
+          </div>
 
-      <TechDivider />
+          <TechDivider />
 
-      <div id="projects">
-        <Projects />
-      </div>
+          <div id="projects">
+            <Projects />
+          </div>
 
-      <TechDivider />
+          <TechDivider />
 
-      <div id="contact">
-        <Contact />
-      </div>
+          <div id="contact">
+            <Contact />
+          </div>
 
-      <TechDivider />
+          <TechDivider />
 
-      <div id="footer">
-        <Footer />
-    </div>
-    </div>
+          <div id="footer">
+            <Footer />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

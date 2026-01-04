@@ -1,43 +1,55 @@
-/* --- Navbar Container --- */
+/* src/components/Navbar.css */
+
+/* --- 1. Main Navbar Container --- */
 .navbar {
-  position: fixed; /* Fixes it to the top */
+  position: fixed;
   top: 0;
-  background:rgba(15, 23, 42, 0.85);
   left: 0;
   width: 100%;
-  padding: 20px 50px;
+  height: 80px;
+  background: rgba(15, 23, 42, 0.85); /* Dark transparent background */
+  backdrop-filter: blur(10px); /* Glass effect */
   display: flex;
-  justify-content: space-between; /* Pushes Logo left, Menu right */
+  justify-content: center;
   align-items: center;
   transition: all 0.3s ease-in-out;
-  z-index: 1000; /* Ensures it sits ABOVE the stars and hero */
+  z-index: 1000; /* Stays on top of everything */
   font-family: 'Courier New', Courier, monospace;
 }
 
-/* --- Glass Effect on Scroll --- */
 .navbar.scrolled {
-  background: rgba(15, 23, 42, 0.85); /* Dark semi-transparent */
-  backdrop-filter: blur(10px); /* The blur effect */
-  padding: 15px 50px; /* Shrinks slightly on scroll */
+  height: 70px; /* Shrink slightly on scroll */
   box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
 }
 
-/* --- Logo --- */
+/* --- 2. Inner Content Wrapper (Keeps things centered) --- */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Max width for large screens */
+  padding: 0 20px;   /* Safe space on edges */
+}
+
+/* --- 3. Logo Style --- */
 .nav-logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #64ffda; /* Tech Green */
+  color: #64ffda; /* Neon Green */
   cursor: pointer;
   letter-spacing: 1px;
-  text-decoration: none;
+  white-space: nowrap;
 }
 
-/* --- Menu Items --- */
+/* --- 4. Menu Links (Desktop) --- */
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 30px; /* Space between items */
+  gap: 30px;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-item a {
@@ -48,27 +60,24 @@
   transition: color 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 8px; /* Space between icon and text */
+  gap: 8px;
 }
 
-/* Hover Effect */
 .nav-item a:hover {
   color: #64ffda;
 }
 
-/* Icon Styles */
-.nav-icon {
-  font-size: 0.9rem;
-}
-
-/* --- Resume Button Style --- */
+/* --- 5. Resume Button --- */
 .resume-btn {
   border: 1px solid #64ffda;
-  color: #64ffda !important; /* Force green color */
+  color: #64ffda !important;
   padding: 8px 16px;
   border-radius: 4px;
   transition: all 0.3s ease-in-out !important;
   background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .resume-btn:hover {
@@ -76,12 +85,64 @@
   transform: translateY(-2px);
 }
 
-/* --- Responsive for Mobile (Hides menu on small screens) --- */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 20px;
+/* --- 6. Hamburger Icon (Hidden on Desktop) --- */
+.menu-icon {
+  display: none;
+  font-size: 1.8rem;
+  color: #64ffda;
+  cursor: pointer;
+}
+
+/* --- 7. MOBILE RESPONSIVE STYLES (Max Width 768px) --- */
+@media screen and (max-width: 768px) {
+  
+  /* Show Hamburger */
+  .menu-icon {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
   }
+
+  /* Hide Desktop Menu & Style Mobile Drawer */
   .nav-menu {
-    display: none; /* You would typically add a Hamburger menu here */
+    position: absolute;
+    top: 80px; /* Push below navbar */
+    left: -100%; /* Hide off-screen left */
+    flex-direction: column;
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    background-color: #0b1120; /* Solid dark background */
+    border-top: 1px solid #1e293b;
+    transition: all 0.5s ease;
+    padding-top: 30px;
+    gap: 0; /* Reset gap */
+  }
+
+  /* Slide in when active */
+  .nav-menu.active {
+    left: 0;
+  }
+
+  /* Mobile Link Styling */
+  .nav-item {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .nav-item a {
+    justify-content: center;
+    font-size: 1.5rem;
+    width: 100%;
+  }
+
+  /* Mobile Resume Button */
+  .resume-btn {
+    width: 80%;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 15px;
   }
 }

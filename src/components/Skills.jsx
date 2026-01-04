@@ -7,7 +7,7 @@ import {
   FaGithub, FaLinux, FaFigma, FaJava, FaPython, FaWindows
 } from "react-icons/fa";
 
-// --- 2. Simple Icons (Fixed Imports) ---
+// --- 2. Simple Icons ---
 import { 
   SiNextdotjs, SiTypescript, SiTailwindcss, SiThreedotjs, 
   SiMongodb, SiExpress, SiMysql, SiSqlite,
@@ -15,10 +15,20 @@ import {
   SiDjango, SiFlask, SiFastapi, SiFlutter, SiHtml5, SiCss3
 } from "react-icons/si";
 
-// --- 3. VS Code Icon (Import from 'vsc' library to fix error) ---
+// --- 3. VS Code Icon ---
 import { VscVscode } from "react-icons/vsc";
 
 const Skills = () => {
+
+  // --- HELPER: Splits text into interactive letters ---
+  const splitText = (text) => {
+    return text.split("").map((char, index) => (
+      <span key={index} className="hover-char">
+        {char === " " ? "\u00A0" : char}
+      </span>
+    ));
+  };
+
   const skillCategories = [
     {
       title: "Frontend",
@@ -78,7 +88,6 @@ const Skills = () => {
         { name: "Wireshark", icon: <SiWireshark /> },
         { name: "Figma", icon: <FaFigma /> },
         { name: "Windows", icon: <FaWindows /> },
-
       ]
     },
   ];
@@ -94,8 +103,15 @@ const Skills = () => {
 
         {skillCategories.map((category, index) => (
           <div key={index} className="skill-category">
+            
+            {/* Header with Color Theme Class */}
             <h3 className={`category-title ${category.theme}-title`}>
-              <span className="hash">//</span> {category.title}
+              <span className="hash">//</span> 
+              
+              <span className="title-text-wrapper">
+                {splitText(category.title)}
+              </span>
+
               <div className={`line ${category.theme}-line`}></div>
             </h3>
             

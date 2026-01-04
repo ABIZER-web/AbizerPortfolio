@@ -1,79 +1,90 @@
-/* App.css */
+/* src/App.css */
+
+/* --- 1. FONT IMPORTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+/* --- 2. GLOBAL RESET --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* --- 3. HTML & BODY SETTINGS --- */
 html {
-  scroll-behavior: smooth; /* Smooth scrolling when clicking nav links */
+  scroll-behavior: smooth; /* Smooth scrolling for nav links */
+  width: 100%;
+  overflow-x: hidden; /* CRITICAL: Prevents side-scrolling on mobile */
 }
 
 body {
-  font-family: sans-serif;
-  color: #333;
-  background-color: #0f172a;
-}
-
-/* Navbar Styling */
-.navbar {
-  position: fixed; /* Stick to top */
-  top: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0b1120; /* Deep Dark Blue (Matches specific component backgrounds) */
+  color: #ccd6f6; /* Light Grey Text */
+  line-height: 1.6;
   width: 100%;
-  height: 70px; /* Fixed Navbar Height */
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 1000;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-.nav-links a {
-  margin-left: 20px;
+/* --- 4. GLOBAL RESPONSIVE FIXES --- */
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
   text-decoration: none;
-  color: #333;
-  font-weight: bold;
+  color: inherit;
 }
 
-/* General Section Styling */
-.full-screen-section {
-  min-height: 100vh; /* Takes full viewport height */
+ul {
+  list-style: none;
+}
+
+/* --- 5. CUSTOM SCROLLBAR (Chrome/Safari) --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b1120; /* Dark track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155; /* Slate grey thumb */
+  border-radius: 5px;
+  border: 2px solid #0b1120;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64ffda; /* Neon Green on hover */
+}
+
+/* --- 6. TEXT SELECTION COLOR --- */
+::selection {
+  background-color: #64ffda; /* Neon Green background */
+  color: #0b1120; /* Dark text */
+}
+
+/* --- 7. UTILITY CLASSES --- */
+.section-wrapper {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center content vertically */
-  align-items: center;     /* Center content horizontally */
-  padding: 80px 20px 20px; /* Top padding accounts for fixed Navbar */
-  text-align: center;
+  overflow: hidden; /* Keeps sections from breaking layout */
 }
 
-/* Alternating background colors to visualize sections */
-.section-home { background-color: #e0f7fa; }
-.section-about { background-color: #fff; }
-.section-skills { background-color: #fce4ec; }
-.section-projects { background-color: #fff; }
-.section-contact { background-color: #e8f5e9; }
-
-/* Responsive Container for Content */
-.content-container {
-  max-width: 1000px;
-  width: 100%;
-}
-
-/* App.css / index.css */
-
-/* ... your existing cursor styles ... */
-
-/* HIDE CUSTOM CURSOR ON MOBILE & TOUCH SCREENS */
+/* --- 8. CUSTOM CURSOR LOGIC --- */
+/* (If you are using a custom cursor component, this hides it on phones) */
 @media (max-width: 768px), (hover: none) {
   .cursor-dot, 
   .cursor-outline {
     display: none !important;
   }
   
-  /* Reset default cursor */
+  /* Reset default cursor for mobile */
   * {
     cursor: auto !important;
   }

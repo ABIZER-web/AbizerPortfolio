@@ -1,25 +1,107 @@
 /* src/index.css */
+
+/* --- 1. FONT IMPORTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+/* --- 2. ROOT VARIABLES (Easy Theme Tweaking) --- */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+
+  /* Color Palette Variables */
+  --bg-dark: #0b1120;
+  --text-main: #ccd6f6;
+  --text-secondary: #8892b0;
+  --neon-green: #64ffda;
+  --neon-purple: #a855f7;
+  
+  /* Scroll behavior */
+  scroll-behavior: smooth;
+}
+
+/* --- 3. GLOBAL RESET --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Crucial for responsiveness */
+}
+
+/* --- 4. HTML & BODY SETTINGS --- */
+html {
+  width: 100%;
+  overflow-x: hidden; /* Prevents horizontal scroll on mobile */
 }
 
 body {
   margin: 0;
   padding: 0;
-  min-width: 100vw;
   min-height: 100vh;
-  overflow-x: hidden; 
-  scroll-behavior: smooth;
-  /* Prevents horizontal scrollbar */
+  width: 100%;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* IMPORTANT: This fixes the boxing issue */
+/* --- 5. ROOT CONTAINER FIX --- */
+/* This fixes the issue where React apps sometimes don't take full height */
 #root {
   width: 100%;
   max-width: 100%;
   margin: 0;
   padding: 0;
-  text-align: left; /* specific to your layout preference */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- 6. CUSTOM SCROLLBAR --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 5px;
+  border: 2px solid var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-green);
+}
+
+/* --- 7. TEXT SELECTION HIGHLIGHT --- */
+::selection {
+  background-color: var(--neon-green);
+  color: #0b1120;
+}
+
+/* --- 8. GLOBAL LINKS & IMAGES --- */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+  height: auto; /* Ensures images scale down on mobile */
+}
+
+/* --- 9. MOBILE RESPONSIVE TYPOGRAPHY --- */
+@media (max-width: 768px) {
+  html {
+    /* Slightly smaller base font size on mobile.
+       This scales down 1rem from 16px to 14px 
+       across the entire site automatically. */
+    font-size: 14px; 
+  }
 }

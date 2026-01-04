@@ -1,0 +1,149 @@
+/* src/components/Loader.css */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
+
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #020617; /* Very dark blue/black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: 'Fira Code', monospace;
+  color: #64ffda;
+  overflow: hidden;
+}
+
+/* Scanlines Effect */
+.loader-scanlines {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(100, 255, 218, 0.05) 2px,
+    rgba(100, 255, 218, 0.05) 4px
+  );
+  pointer-events: none;
+}
+
+.loader-content {
+  text-align: center;
+  z-index: 2;
+  width: 90%;
+  max-width: 500px;
+}
+
+/* Spinner Animation */
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(100, 255, 218, 0.2);
+  border-top-color: #64ffda;
+  border-radius: 50%;
+  margin: 0 auto 30px;
+  animation: spin 1s linear infinite;
+  position: relative;
+}
+
+.inner-spin {
+  position: absolute;
+  top: 5px; left: 5px; right: 5px; bottom: 5px;
+  border: 2px solid transparent;
+  border-bottom-color: #a855f7; /* Purple accent */
+  border-radius: 50%;
+  animation: spin-reverse 2s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
+
+/* Text & Bar */
+.loading-text {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.loader-bar {
+  width: 100%;
+  height: 4px;
+  background: #1e293b;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader-progress {
+  width: 0%;
+  height: 100%;
+  background: #64ffda;
+  animation: progressFill 3.2s ease-in-out forwards; /* Matches text delay */
+}
+
+@keyframes progressFill {
+  0% { width: 0%; }
+  40% { width: 40%; }
+  70% { width: 80%; }
+  100% { width: 100%; }
+}
+
+/* --- MOBILE WARNING STYLES --- */
+.mobile-warning {
+  border: 1px solid #64ffda;
+  padding: 30px;
+  background: rgba(10, 255, 157, 0.05);
+  box-shadow: 0 0 20px rgba(10, 255, 157, 0.1);
+}
+
+.warning-title {
+  color: #f59e0b; /* Orange warning color */
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.warning-text {
+  color: #ccd6f6;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.highlight {
+  color: #64ffda;
+  font-weight: bold;
+}
+
+.warning-subtext {
+  color: #8892b0;
+  font-size: 0.8rem;
+  margin-bottom: 25px;
+}
+
+.enter-btn {
+  background: transparent;
+  border: 1px solid #64ffda;
+  color: #64ffda;
+  padding: 10px 20px;
+  font-family: 'Fira Code', monospace;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.enter-btn:hover {
+  background: rgba(100, 255, 218, 0.1);
+  box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

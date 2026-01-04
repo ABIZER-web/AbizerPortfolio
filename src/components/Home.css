@@ -1,55 +1,53 @@
-/* ============================================
-   HERO SECTION STYLES
-   ============================================ */
+/* src/components/Home.css */
 
 /* --- 1. HERO CONTAINER --- */
 .hero-container {
-  /* Forces section to be exactly the height of the screen */
   min-height: 100vh;
-  width: 100%; /* 100% is safer than 100vw to avoid horizontal scrollbars */
-  
-  /* Flexbox centers the main content block vertically & horizontally */
-
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
   position: relative;
-  overflow: hidden; /* Stops stars/animations from stretching page */
-  padding: 0 20px; /* Adds safety padding on sides so text never hits the edge */
+  overflow: hidden; 
+  padding: 100px 20px 20px 20px;
 }
 
-/* --- 2. HERO CONTENT (The Layout Block) --- */
+/* --- 2. HERO CONTENT --- */
 .hero-content {
   display: flex;
-  flex-direction: row; /* Default: Side-by-Side for Laptops */
+  flex-direction: row; 
   align-items: center;
   justify-content: center;
-  gap: 50px; /* Space between Image and Text */
-  
-  max-width: 1400px; /* Keeps content from getting too wide on huge monitors */
+  gap: 50px;
+  max-width: 1200px;
   width: 100%;
   z-index: 1;
 }
 
-/* --- 3. FLOATING IMAGE (Left) --- */
+/* --- 3. IMAGE SECTION --- */
 .hero-image-wrapper {
   flex: 1;
   display: flex;
-  justify-content: flex-end; /* Pushes image slightly towards center */
-  padding: 50px;
+  justify-content: flex-end; 
+  padding: 20px;
 }
 
 .hero-img {
-  width: 350px; /* Slightly larger for full screen impact */
-  height: 350px;
+  width: 380px;
+  height: 380px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 0 0 25px rgba(100, 255, 218, 0.25);
+  border: 4px solid rgba(100, 255, 218, 0.3);
+  box-shadow: 0 0 30px rgba(100, 255, 218, 0.2);
+  transition: all 0.3s ease;
 }
 
-/* Floating Animation */
+.hero-img:hover {
+  border-color: #64ffda;
+  box-shadow: 0 0 40px rgba(100, 255, 218, 0.4);
+}
+
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-20px); }
@@ -57,170 +55,123 @@
 }
 
 .floating-animation {
-  animation: float 3s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
 }
 
-/* --- 4. TEXT CONTENT (Right) --- */
+/* --- 4. TEXT CONTENT --- */
 .hero-text {
-  flex: 1;
+  flex: 1.2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Aligns text to the left side of the right block */
+  align-items: flex-start;
   text-align: left;
-  justify-content: center;
-  padding-left: 100px;
+  padding-left: 20px;
 }
 
-/* --- Status Badge --- */
+/* Status Badge */
 .status-badge {
   display: inline-flex;
   align-items: center;
-  background: rgba(100, 255, 218, 0.1);
-  padding: 8px 16px;
+  background: rgba(100, 255, 218, 0.05);
+  padding: 6px 16px;
   border-radius: 20px;
-  margin-top: 120px;
-  border: 1px solid rgba(100, 255, 218, 0.3);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  margin-bottom: 20px;
 }
 
 .green-dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background-color: #00ff00;
   border-radius: 50%;
   margin-right: 10px;
+  box-shadow: 0 0 10px #00ff00;
   animation: blink-green 2s infinite ease-in-out; 
 }
 
-/* Green Dot Blinking Animation */
 @keyframes blink-green {
-  0% {
-    background-color: #00ff00; /* Light Green */
-    box-shadow: 0 0 10px #00ff00;
-  }
-  50% {
-    background-color: #006400; /* Dark Green */
-    box-shadow: 0 0 2px #006400; /* Dimmer shadow */
-  }
-  100% {
-    background-color: #00ff00; /* Back to Light Green */
-    box-shadow: 0 0 10px #00ff00;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 .status-text {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #64ffda;
-  font-family: sans-serif;
+  font-family: 'Courier New', monospace;
   font-weight: 600;
 }
 
-/* --- Glitch Name Effect --- */
+/* Name Glitch Effect */
 .hero-name {
-  color: #3399ff; 
-  font-size: 6rem;
-  font-weight: 900;
-  position: relative;
-  letter-spacing: 3px;
-  font-family: sans-serif;
-  cursor: pointer;
+  color: #ccd6f6; 
+  font-size: 5rem;
+  font-weight: 800;
   line-height: 1.1;
-  transition: color 0.2s;
+  letter-spacing: 2px;
+  position: relative;
+  font-family: system-ui, -apple-system, sans-serif;
+  margin-bottom: 10px;
 }
 
-/* Base Glitch Layers */
-.hero-name::before,
-.hero-name::after {
-  content: attr(data-text); /* THIS IS KEY: It grabs "SAIFY" automatically */
+.hero-name::before, .hero-name::after {
+  content: attr(data-text);
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #0f172a; 
-  display: block; 
-  opacity: 0.7;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: #0b1120;
+  opacity: 0.8;
 }
 
-/* Layer 1: Red Shift */
 .hero-name::before {
-  left: 3px;
-  text-shadow: -2px 0 #ff0055;
+  left: 2px; text-shadow: -2px 0 #ff0055;
   clip: rect(24px, 550px, 90px, 0);
   animation: glitch-anim-2 3s infinite linear alternate-reverse;
 }
 
-/* Layer 2: Cyan Shift */
 .hero-name::after {
-  left: -3px;
-  text-shadow: 2px 0 #00ffea;
+  left: -2px; text-shadow: 2px 0 #00ffea;
   clip: rect(85px, 550px, 140px, 0);
   animation: glitch-anim 2.5s infinite linear alternate-reverse;
 }
 
-/* --- THE BOOST: Make it go crazy on hover --- */
-.hero-name:hover::before {
-  animation: glitch-anim-2 0.3s infinite linear alternate-reverse;
-  text-shadow: -4px 0 #ff0055; /* Stronger shadow */
-  left: 4px; /* Bigger shift */
-}
-
-.hero-name:hover::after {
-  animation: glitch-anim 0.3s infinite linear alternate-reverse;
-  text-shadow: 4px 0 #00ffea; /* Stronger shadow */
-  left: -4px; /* Bigger shift */
-}
-
-/* Glitch Animations */
 @keyframes glitch-anim {
   0% { clip: rect(10px, 9999px, 31px, 0); }
   20% { clip: rect(80px, 9999px, 96px, 0); }
-  40% { clip: rect(25px, 9999px, 66px, 0); }
-  60% { clip: rect(5px, 9999px, 91px, 0); }
-  80% { clip: rect(72px, 9999px, 100px, 0); }
   100% { clip: rect(33px, 9999px, 62px, 0); }
 }
-
 @keyframes glitch-anim-2 {
   0% { clip: rect(65px, 9999px, 100px, 0); }
-  20% { clip: rect(10px, 9999px, 15px, 0); }
-  40% { clip: rect(50px, 9999px, 85px, 0); }
-  60% { clip: rect(20px, 9999px, 44px, 0); }
-  80% { clip: rect(90px, 9999px, 5px, 0); }
-  100% { clip: rect(35px, 9999px, 60px, 0); }
+  100% { clip: rect(87px, 9999px, 95px, 0); }
 }
 
 /* Role */
 .hero-role {
-  font-size: 2.5rem;
-  color: #ccd6f6;
-  margin: 15px 0 25px 0;
+  font-size: 2rem;
+  color: #8892b0;
+  margin-bottom: 30px;
+  font-family: 'Courier New', monospace;
 }
 
-/* Comments */
+/* Code Comments */
 .code-comments {
-  margin-bottom: 35px;
+  margin-bottom: 40px;
 }
 
 .comment-line {
   color: #8892b0;
-  font-size: 1.2rem;
-  margin: 5px 0;
-  font-style: italic;
-  min-height: 1.5em; 
+  font-size: 1rem;
+  font-family: 'Courier New', monospace;
+  margin: 4px 0;
   display: flex;
   align-items: center;
 }
 
-/* Blinking Cursor */
 .cursor {
   display: inline-block;
   background-color: #64ffda;
-  width: 3px;
-  height: 1.2em;
-  vertical-align: middle;
-  margin-left: 4px;
-  animation: blink-cursor 1s step-end infinite;
-  box-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+  width: 8px;
+  height: 14px;
+  margin-left: 5px;
+  animation: blink-cursor 1s infinite;
 }
 
 @keyframes blink-cursor {
@@ -228,216 +179,140 @@
   50% { opacity: 0; }
 }
 
-/* Optional: Different blink timing for each line */
-.comment-line:nth-child(1) .cursor {
-  animation-delay: 0.1s;
-}
-
-.comment-line:nth-child(2) .cursor {
-  animation-delay: 0.3s;
-}
-
-/* --- Buttons --- */
+/* Buttons */
 .hero-buttons {
   display: flex;
-  gap: 25px;
-  margin-bottom: 45px;
+  gap: 20px;
 }
 
 .btn {
-  padding: 14px 32px;
-  font-size: 1.1rem;
-  cursor: pointer;
+  padding: 12px 28px;
+  font-size: 1rem;
   border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  text-decoration: none;
   transition: all 0.3s ease;
-  font-family: inherit;
-  font-weight: bold;
   display: flex;
   align-items: center;
   gap: 10px;
-  text-decoration: none;
 }
 
-.primary-btn {
-  background-color: transparent;
-  border: 1px solid #64ffda;
-  color: #64ffda;
-}
+.primary-btn { border: 1px solid #64ffda; color: #64ffda; }
+.primary-btn:hover { background: rgba(100, 255, 218, 0.1); transform: translateY(-3px); }
 
-.primary-btn:hover {
-  background-color: #64ffda;
-  color: #0f172a;
-  border: 1px solid #64ffda;
-}
+.secondary-btn { color: #ccd6f6; border: 1px solid #ccd6f6; }
+.secondary-btn:hover { background: rgba(204, 214, 246, 0.1); transform: translateY(-3px); }
 
-.secondary-btn {
-  background-color: transparent;
-  border: 1px solid #64ffda;
-  color: #64ffda;
-}
 
-.secondary-btn:hover {
-  background-color: #64ffda;
-  color: #0f172a;
-  border: 1px solid #64ffda;
-}
-
-/* --- 5. SCROLL INDICATOR --- */
+/* --- 5. UPDATED SCROLL INDICATOR --- */
 .scroll-indicator {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
+  /* No longer absolute! */
+  margin-top: 50px; /* Push it down from buttons */
+  
+  /* Center it horizontally within the Text column */
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: center; /* Crucial: Centers it in the flex column */
+  
   color: #8892b0;
-  z-index: 10;
+  font-size: 0.8rem;
 }
 
 .mouse {
-  width: 26px;
-  height: 42px;
+  width: 24px;
+  height: 40px;
   border: 2px solid #8892b0;
   border-radius: 20px;
+  margin-bottom: 5px;
   position: relative;
-  margin-bottom: 10px;
 }
 
 .wheel {
   width: 4px;
-  height: 8px;
-  background-color: #64ffda;
+  height: 6px;
+  background: #64ffda;
   border-radius: 2px;
   position: absolute;
-  top: 6px;
-  left: 50%;
+  top: 8px; left: 50%;
   transform: translateX(-50%);
-  animation: scroll-wheel 2s infinite;
+  animation: scroll 1.5s infinite;
 }
 
-/* Fixed Scroll Wheel Animation */
-@keyframes scroll-wheel {
-  0% {
-    top: 8px;
-    opacity: 1;
-  }
-  100% {
-    top: 25px;
-    opacity: 0;
-  }
+@keyframes scroll {
+  0% { top: 8px; opacity: 1; }
+  100% { top: 24px; opacity: 0; }
 }
 
 /* ============================================
-   RESPONSIVE DESIGN
+   RESPONSIVE MEDIA QUERIES
    ============================================ */
 
-/* Tablet and smaller laptops */
-@media (max-width: 992px) {
+/* Tablet & Mobile (Max Width 1024px) */
+@media (max-width: 1024px) {
   .hero-content {
-    flex-direction: column;
+    flex-direction: column; /* Stack items */
+    gap: 40px;
     text-align: center;
-    gap: 30px;
   }
   
   .hero-image-wrapper {
+    order: 1; /* Image on top */
     justify-content: center;
-    padding: 20px;
+    padding: 0;
   }
   
-  .hero-text {
-    align-items: center;
-    text-align: center;
-    padding-left: 0;
-  }
-  
-  .hero-name {
-    font-size: 4rem;
-  }
-  
-  .hero-role {
-    font-size: 1.8rem;
-  }
-  
-  .status-badge {
-    margin-top: 60px;
-  }
-}
-
-/* Mobile devices */
-@media (max-width: 768px) {
   .hero-img {
     width: 280px;
     height: 280px;
   }
-  
-  .hero-name {
-    font-size: 3.5rem;
+
+  .hero-text {
+    order: 2; /* Text below */
+    align-items: center;
+    padding-left: 0;
+    width: 100%;
   }
+
+  .hero-name { font-size: 3.5rem; }
   
-  .hero-role {
-    font-size: 1.6rem;
+  .code-comments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  
+
+  .hero-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/* Mobile (Max Width 768px) */
+@media (max-width: 768px) {
+  .hero-container {
+    padding-top: 120px;
+  }
+
+  .hero-img { width: 250px; height: 250px; }
+  .hero-name { font-size: 2.8rem; }
+  .hero-role { font-size: 1.5rem; }
+
   .hero-buttons {
     flex-direction: column;
     width: 100%;
     max-width: 300px;
+    gap: 15px;
   }
+
+  .btn { width: 100%; justify-content: center; }
+  
+  /* Hide scroll indicator on very small screens if desired */
+  /* .scroll-indicator { display: none; } */
 }
 
-/* Small mobile devices */
-@media (max-width: 480px) {
-  .hero-img {
-    width: 220px;
-    height: 220px;
-  }
-  
-  .hero-name {
-    font-size: 2.8rem;
-    letter-spacing: 1px;
-  }
-  
-  .hero-role {
-    font-size: 1.4rem;
-  }
-  
-  .comment-line {
-    font-size: 1rem;
-  }
-  
-  .btn {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .cursor {
-    width: 2px;
-    height: 1em;
-  }
-  
-  .status-badge {
-    margin-top: 40px;
-    padding: 6px 12px;
-  }
-  
-  .status-text {
-    font-size: 0.8rem;
-  }
-}
-
-/* Extra small devices */
-@media (max-width: 360px) {
-  .hero-name {
-    font-size: 2.2rem;
-  }
-  
-  .hero-role {
-    font-size: 1.2rem;
-  }
-  
-  .hero-img {
-    width: 180px;
-    height: 180px;
-  }
+@media (max-width: 400px) {
+  .hero-name { font-size: 2.2rem; }
+  .hero-img { width: 200px; height: 200px; }
 }
