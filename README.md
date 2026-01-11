@@ -1,10 +1,3 @@
-Based on the code snippets, features, and links you have provided, here is a professional, Markdown-ready `README.md` file for your GitHub repository.
-
-You can copy the code block below and paste it directly into your project's `README.md` file.
-
----
-
-```markdown
 # 🚀 Abizer Saify - Personal Portfolio
 
 ![Portfolio Preview](https://github.com/ABIZER-web/AbizerPortfolio/assets/your-image-link-here)
