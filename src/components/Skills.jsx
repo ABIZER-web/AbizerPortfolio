@@ -38,18 +38,21 @@ const Skills = () => {
         { name: "CSS", icon: <SiCss3 /> },
         { name: "JavaScript", icon: <FaJs /> },
         { name: "React.js", icon: <FaReact /> },
-        { name: "Three.js", icon: <SiThreedotjs /> },
-        { name: "Flutter", icon: <SiFlutter /> },
-        { name: "Dart", icon: <SiFlutter /> },
+        // { name: "Three.js", icon: <SiThreedotjs /> },
+        // { name: "Flutter", icon: <SiFlutter /> },
+        // { name: "Dart", icon: <SiFlutter /> },
       ]
     },
     {
       title: "Backend",
       theme: "backend",
       skills: [
+        // { name: "Java", icon: <FaJava /> },
+        // { name: "Python", icon: <FaPython /> },
+        { name: "TypeScript", icon: <SiTypescript /> },
         { name: "Django", icon: <SiDjango /> },
         { name: "Flask", icon: <SiFlask /> },
-        { name: "FastAPI", icon: <SiFastapi /> },
+        // { name: "FastAPI", icon: <SiFastapi /> },
         { name: "Node.js", icon: <FaNodeJs /> },
         { name: "Express.js", icon: <SiExpress /> },
       ]
@@ -58,12 +61,9 @@ const Skills = () => {
       title: "Frameworks / Libraries",
       theme: "framework",
       skills: [
-        { name: "Java", icon: <FaJava /> },
-        { name: "Python", icon: <FaPython /> },
         { name: "Bootstrap", icon: <FaBootstrap /> },
         { name: "Tailwind CSS", icon: <SiTailwindcss /> },
         { name: "Next.js", icon: <SiNextdotjs /> },
-        { name: "TypeScript", icon: <SiTypescript /> },
       ]
     },
     {
