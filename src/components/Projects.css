@@ -64,7 +64,14 @@
   transform: translateX(-20px);
 }
 
-.hash { color: #0aff9d; margin-right: 10px; }
+/* --- UPDATED: Arrow Icon Styling --- */
+.category-icon { 
+  color: #0aff9d;        /* Neon Green Color */
+  margin-right: 20px;    /* Space between Arrow and Text */
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem; 
+}
 
 .category-desc {
   color: #94a3b8;
@@ -144,9 +151,7 @@
   flex-grow: 1;
 }
 
-/* =========================================
-   UPDATED: PROJECT NAME GLITCH EFFECT
-   ========================================= */
+/* --- PROJECT NAME GLITCH EFFECT --- */
 
 .project-name {
   font-size: 1.1rem;
@@ -156,7 +161,7 @@
   font-family: 'Inter', sans-serif;
   cursor: pointer;
   position: relative;
-  display: inline-block; /* Changed from flex to inline-block for glitch */
+  display: inline-block; 
 }
 
 /* The Glitch Effect on Hover */
@@ -164,7 +169,6 @@
   color: #0aff9d; /* Main text turns green on hover */
 }
 
-/* Creating the pseudo-elements that only appear on hover */
 .glitch-hover::before,
 .glitch-hover::after {
   content: attr(data-text);
@@ -173,12 +177,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #1e293b; /* Matches card background to hide main text */
-  opacity: 0; /* Hidden by default */
+  background: #1e293b;
+  opacity: 0;
   pointer-events: none;
 }
 
-/* Layer 1: Magenta shift on hover */
 .glitch-hover:hover::before {
   opacity: 1;
   left: 2px;
@@ -187,7 +190,6 @@
   animation: glitch-anim-text 0.3s infinite linear alternate-reverse;
 }
 
-/* Layer 2: Cyan shift on hover */
 .glitch-hover:hover::after {
   opacity: 1;
   left: -2px;
@@ -197,7 +199,7 @@
   animation-delay: 0.1s;
 }
 
-/* Keeps Category Titles Popping (Using the old hover-char class) */
+/* Keeps Category Titles Popping */
 .category-title .hover-char {
   display: inline-block;
   transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1), color 0.2s, text-shadow 0.2s;
@@ -220,7 +222,7 @@
 .note-highlight {
   color: #ef4444; /* Bright Red */
   font-weight: bold;
-  background-color: rgba(239, 68, 68, 0.1); /* Subtle red background */
+  background-color: rgba(239, 68, 68, 0.1); 
   padding: 0 4px;
   border-radius: 4px;
 }
@@ -282,6 +284,5 @@
   .category-title { font-size: 1.5rem; }
   .project-btn { padding: 12px; font-size: 0.95rem; }
   
-  /* Reduce pop animation size on mobile */
   .category-title .hover-char:hover { transform: translateY(-3px) scale(1.1); }
 }
