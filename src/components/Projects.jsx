@@ -49,13 +49,13 @@ const Projects = () => {
       title: "Own Projects", 
       description: "Major personal projects built from scratch.",
       projects: [
-        {
-          title: "Portfolio Website",
-          description: "A fully responsive personal portfolio built with React, Vite, and Framer Motion to showcase skills.",
-          image: portfolioImage,
-          // github: "https://github.com/ABIZER-web/Own-Projects.git",
-          demo: "https://abizer-portfolio.vercel.app/" 
-        },
+        // {
+        //   title: "Portfolio Website",
+        //   description: "A fully responsive personal portfolio built with React, Vite, and Framer Motion to showcase skills.",
+        //   image: portfolioImage,
+        //   // github: "https://github.com/ABIZER-web/Own-Projects.git",
+        //   demo: "https://abizer-portfolio.vercel.app/" 
+        // },
         {
           title: "Dev Command Hub",
           description: "A centralized platform for developers to store, manage, and access essential CLI commands efficiently.",
